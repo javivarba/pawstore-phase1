@@ -1,0 +1,317 @@
+/* ============================================
+   PawStore — Design tokens (Pet Shop Urbano)
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Color */
+  --color-marca: #1B3A4B;       /* azul petróleo — header, footer, títulos */
+  --color-acento: #FF6B4A;      /* coral — precios, botones, estado activo */
+  --color-acento-oscuro: #E5522F; /* hover del coral */
+  --color-fondo: #F7F8F9;       /* gris muy claro — fondo general */
+  --color-superficie: #FFFFFF;  /* fondo de tarjetas */
+  --color-texto: #1F2933;       /* texto principal */
+  --color-texto-suave: #5B6B76; /* texto secundario (categoría, descripciones) */
+  --color-borde: #E3E7EA;
+
+  /* Tipografía */
+  --fuente-titulo: 'Poppins', sans-serif;
+  --fuente-texto: 'Inter', sans-serif;
+
+  /* Espaciado */
+  --espacio-xs: 0.5rem;
+  --espacio-sm: 1rem;
+  --espacio-md: 1.5rem;
+  --espacio-lg: 2.5rem;
+
+  /* Otros */
+  --radio-borde: 12px;
+  --sombra-tarjeta: 0 2px 8px rgba(27, 58, 75, 0.08);
+  --sombra-tarjeta-hover: 0 8px 20px rgba(27, 58, 75, 0.14);
+}
+
+/* ============================================
+   Reset básico
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  margin: 0 0 var(--espacio-sm);
+}
+
+p {
+  margin: 0 0 var(--espacio-sm);
+}
+
+button {
+  font-family: var(--fuente-texto);
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  background-color: var(--color-acento);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease;
+}
+
+button:hover {
+  background-color: var(--color-acento-oscuro);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-marca);
+  outline-offset: 2px;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--espacio-lg) var(--espacio-md);
+  min-height: 60vh;
+}
+
+/* ============================================
+   Header / NavLink
+   ============================================ */
+.header {
+  background-color: var(--color-marca);
+  padding: var(--espacio-sm) var(--espacio-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--espacio-sm);
+}
+
+.header-titulo {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--espacio-md);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link-activo {
+  color: white;
+  border-bottom-color: var(--color-acento);
+}
+
+/* ============================================
+   Inicio
+   ============================================ */
+.inicio {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.inicio-info {
+  margin-top: var(--espacio-lg);
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.inicio-titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-marca);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--espacio-md);
+}
+
+.inicio-texto {
+  font-size: 1.15rem;
+  color: var(--color-texto);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Catálogo / ProductCard
+   ============================================ */
+.catalogo-titulo {
+  margin-bottom: var(--espacio-md);
+}
+
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--espacio-md);
+}
+
+.product-card {
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-tarjeta);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-tarjeta-hover);
+}
+
+.product-card-imagen {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: var(--color-borde);
+}
+
+.product-card-nombre {
+  font-size: 1.05rem;
+  margin: var(--espacio-sm) var(--espacio-sm) 0.25rem;
+}
+
+.product-card-precio {
+  color: var(--color-acento);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 var(--espacio-sm) 0.25rem;
+}
+
+.product-card-categoria {
+  display: inline-block;
+  margin: 0 var(--espacio-sm) var(--espacio-sm);
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.product-card button {
+  margin: 0 var(--espacio-sm) var(--espacio-sm);
+  margin-top: auto;
+}
+
+/* ============================================
+   Detalle
+   ============================================ */
+.detalle {
+  max-width: 640px;
+  margin: 0 auto;
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-borde);
+  box-shadow: var(--sombra-tarjeta);
+  padding: var(--espacio-md);
+}
+
+.detalle-imagen {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background-color: var(--color-borde);
+  border-radius: var(--radio-borde);
+  margin-bottom: var(--espacio-md);
+}
+
+.detalle-precio {
+  color: var(--color-acento);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.detalle-categoria {
+  color: var(--color-texto-suave);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+.detalle-descripcion {
+  margin-top: var(--espacio-sm);
+}
+
+.detalle-info {
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+  font-style: italic;
+  border-top: 1px solid var(--color-borde);
+  padding-top: var(--espacio-sm);
+}
+
+/* ============================================
+   Contacto
+   ============================================ */
+.contacto {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+  background-color: var(--color-marca);
+  color: rgba(255, 255, 255, 0.8);
+  padding: var(--espacio-md);
+  text-align: center;
+}
+
+.footer-texto {
+  margin: 0 0 var(--espacio-xs);
+  font-size: 0.85rem;
+}
+
+.footer-redes {
+  display: flex;
+  justify-content: center;
+  gap: var(--espacio-sm);
+}
+
+.footer-redes a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.footer-redes a:hover {
+  color: white;
+}
+
+/* ============================================
+   Accesibilidad: respeta preferencia de movimiento reducido
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  button,
+  .nav-link {
+    transition: none;
+  }
+}
