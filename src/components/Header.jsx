@@ -1,23 +1,23 @@
 import NavLink from './NavLink';
 
-const ITEMS_MENU = [
-  { label: 'Inicio', vista: 'inicio' },
-  { label: 'Productos', vista: 'catalogo' },
-  { label: 'Contacto', vista: 'contacto' },
+const MENU_ITEMS = [
+  { label: 'Inicio', view: 'home' },
+  { label: 'Productos', view: 'catalog' },
+  { label: 'Contacto', view: 'contact' },
 ];
 
-function Header({ vistaActual, onNavegar }) {
+function Header({ currentView, onNavigate }) {
   return (
     <header className="header">
       <h1 className="header-titulo">PawStore</h1>
       <nav className="header-nav">
-        {ITEMS_MENU.map((item) => (
+        {MENU_ITEMS.map((item) => (
           <NavLink
-            key={item.vista}
-            vista={item.vista}
+            key={item.view}
+            view={item.view}
             label={item.label}
-            vistaActual={vistaActual}
-            onClick={() => onNavegar(item.vista)}
+            currentView={currentView}
+            onClick={() => onNavigate(item.view)}
           />
         ))}
       </nav>

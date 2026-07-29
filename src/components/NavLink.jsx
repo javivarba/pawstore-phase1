@@ -1,10 +1,10 @@
-function NavLink({ vista, label, vistaActual, onClick }) {
-  const esActivo = vista === vistaActual;
+function NavLink({ view, label, currentView, onClick }) {
+  const isActive = view === currentView;
 
   return (
     <a
       href="#"
-      className={esActivo ? "nav-link nav-link-activo" : "nav-link"}
+      className={isActive ? 'nav-link nav-link-activo' : 'nav-link'}
       onClick={(e) => {
         e.preventDefault();
         onClick();

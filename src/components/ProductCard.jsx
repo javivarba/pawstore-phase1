@@ -1,15 +1,15 @@
-function ProductCard({ producto, onVerDetalle }) {
+function ProductCard({ product, onViewDetails }) {
   return (
     <article className="product-card">
       <img
-        src={producto.imagen}
-        alt={producto.nombre}
+        src={product.imagen}
+        alt={product.nombre}
         className="product-card-imagen"
       />
-      <h3 className="product-card-nombre">{producto.nombre}</h3>
-      <p className="product-card-precio">${producto.precio}</p>
-      <p className="product-card-categoria">{producto.categoria}</p>
-      <button onClick={() => onVerDetalle(producto.id)}>
+      <h3 className="product-card-nombre">{product.nombre}</h3>
+      <p className="product-card-precio">${product.precio}</p>
+      <p className="product-card-categoria">{product.categoria}</p>
+      <button onClick={() => onViewDetails(product.id)}>
         Ver detalles
       </button>
     </article>

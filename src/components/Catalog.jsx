@@ -1,7 +1,7 @@
 import ProductCard from './ProductCard';
 
-function Catalogo({ productos, onVerDetalle }) {
-  if (!productos || productos.length === 0) {
+function Catalog({ products, onViewDetails }) {
+  if (!products || products.length === 0) {
     return <p>No hay productos disponibles por el momento.</p>;
   }
 
@@ -9,11 +9,11 @@ function Catalogo({ productos, onVerDetalle }) {
     <div className="catalogo">
       <h2 className="catalogo-titulo">Catálogo de productos</h2>
       <div className="catalogo-grid">
-        {productos.map((producto) => (
+        {products.map((product) => (
           <ProductCard
-            key={producto.id}
-            producto={producto}
-            onVerDetalle={onVerDetalle}
+            key={product.id}
+            product={product}
+            onViewDetails={onViewDetails}
           />
         ))}
       </div>
@@ -21,4 +21,4 @@ function Catalogo({ productos, onVerDetalle }) {
   );
 }
 
-export default Catalogo;
+export default Catalog;

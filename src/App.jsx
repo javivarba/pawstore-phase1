@@ -2,47 +2,47 @@ import { useState } from 'react';
 import products from './data/products.json';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Inicio from './components/Inicio';
-import Catalogo from './components/Catalogo';
-import Detalle from './components/Detalle';
-import Contacto from './components/Contacto';
+import Home from './components/Home';
+import Catalog from './components/Catalog';
+import ProductDetail from './components/ProductDetail';
+import Contact from './components/Contact';
 
 function App() {
-  const [vistaActual, setVistaActual] = useState('inicio');
-  const [idProductoSeleccionado, setIdProductoSeleccionado] = useState(null);
+  const [currentView, setCurrentView] = useState('home');
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
-  function handleNavegar(vista) {
-    setVistaActual(vista);
+  function handleNavigate(view) {
+    setCurrentView(view);
   }
 
-  function handleVerDetalle(id) {
-    setIdProductoSeleccionado(id);
-    setVistaActual('detalle');
+  function handleViewDetails(id) {
+    setSelectedProductId(id);
+    setCurrentView('detail');
   }
 
-  function handleVolverCatalogo() {
-    setVistaActual('catalogo');
+  function handleBackToCatalog() {
+    setCurrentView('catalog');
   }
 
-  function renderVista() {
-    switch (vistaActual) {
-      case 'inicio':
-        return <Inicio onNavegar={handleNavegar} />;
+  function renderView() {
+    switch (currentView) {
+      case 'home':
+        return <Home onNavigate={handleNavigate} />;
 
-      case 'catalogo':
+      case 'catalog':
         return (
-          <Catalogo productos={products} onVerDetalle={handleVerDetalle} />
+          <Catalog products={products} onViewDetails={handleViewDetails} />
         );
 
-      case 'detalle': {
-        const producto = products.find(
-          (p) => p.id === idProductoSeleccionado
+      case 'detail': {
+        const product = products.find(
+          (p) => p.id === selectedProductId
         );
-        return <Detalle producto={producto} onVolver={handleVolverCatalogo} />;
+        return <ProductDetail product={product} onBack={handleBackToCatalog} />;
       }
 
-      case 'contacto':
-        return <Contacto />;
+      case 'contact':
+        return <Contact />;
 
       default:
         return null;
@@ -51,8 +51,8 @@ function App() {
 
   return (
     <>
-      <Header vistaActual={vistaActual} onNavegar={handleNavegar} />
-      <main>{renderVista()}</main>
+      <Header currentView={currentView} onNavigate={handleNavigate} />
+      <main>{renderView()}</main>
       <Footer />
     </>
   );
